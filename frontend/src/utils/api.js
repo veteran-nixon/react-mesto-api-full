@@ -89,7 +89,6 @@ class Api {
 const api = new Api({
     url: 'http://api.mesto.dolganev.nomoredomains.xyz',
     headers: {
-      "Authorization" : 'Bearer ',
       'Content-Type': 'application/json'
     }
   });
