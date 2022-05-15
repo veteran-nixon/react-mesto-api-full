@@ -6,7 +6,7 @@ const { PORT = 3000 } = process.env;
 
 const mongoose = require('mongoose');
 
-const cors = require('./middlewares/cors');
+const cors = require('cors');
 
 const userRouter = require('./routes/user');
 
