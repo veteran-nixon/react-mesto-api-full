@@ -121,7 +121,8 @@ function App() {
       history.push('/')
     }
     tokenCheck()
-  }, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [history, loggedIn])
 
   function handleRegister(password, email) {
     return mestoAuth.register(password, email).then(() => {
@@ -150,7 +151,7 @@ function App() {
     if (token){
       mestoAuth.getContent(token).then((res) => {
         if (res){
-          setEmail(res.data)
+          setEmail(res.email)
           setLoggedIn(true)
           history.push('/')
         }

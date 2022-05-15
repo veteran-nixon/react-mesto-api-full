@@ -8,7 +8,7 @@ function NavBar(props) {
             <Switch>
                 <Route exact path="/">
                     <div className="header__nav-container">
-                    <div className="header__email">{props.userEmail.email}</div>
+                    <div className="header__email">{props.userEmail}</div>
                     <div onClick={props.signOut} className="header__swicher">Выход</div>
                     </div>
                 </Route>
