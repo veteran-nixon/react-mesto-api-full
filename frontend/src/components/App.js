@@ -70,13 +70,13 @@ function App() {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
 
     if(isLiked) {
-        api.deleteLike(card._id)
+        api.deleteLike(card)
         .then((newCard) => {
           setCardList((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
         .catch((err) => console.log(err));
     } else {
-        api.putLike(card._id)
+        api.putLike(card)
         .then((newCard) => {
           setCardList((state) => state.map((c) => c._id === card._id ? newCard : c));
         })
