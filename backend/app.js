@@ -52,7 +52,7 @@ app.post('/signin', celebrate({
   }),
 }), login);
 
-app.use(auth);
+// app.use(auth);
 
 app.use(auth, userRouter);
 app.use(auth, cardRouter);

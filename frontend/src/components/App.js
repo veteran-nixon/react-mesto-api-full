@@ -121,7 +121,7 @@ function App() {
       history.push('/')
     }
     tokenCheck()
-  }, [history, loggedIn])
+  }, [])
 
   function handleRegister(password, email) {
     return mestoAuth.register(password, email).then(() => {
@@ -145,7 +145,6 @@ function App() {
     });
   }
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token){
