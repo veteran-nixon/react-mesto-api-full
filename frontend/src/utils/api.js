@@ -60,8 +60,8 @@ class Api {
         .then(this._checkResponse)
     }
 
-    deleteCard(data) {
-        return fetch(`${this._url}/cards/${data._id}`, {
+    deleteCard(id) {
+        return fetch(`${this._url}/cards/${id}`, {
             method: 'DELETE',
             headers: this._headers
         })
