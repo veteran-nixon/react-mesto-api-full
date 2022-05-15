@@ -9,7 +9,7 @@ class Api {
             return res.json();
         }
         return Promise.reject(`Ошибка ${res.status}`);
-    } 
+    }
 
     getAllData() {
         return Promise.all([this.getUser(), this.getCard()])
@@ -24,9 +24,9 @@ class Api {
         return fetch(`${this._url}/cards`, { headers: this._headers })
             .then(this._checkResponse)
     }
-    
+
     createNewCard(data) {
-        return fetch(`${this._url}/cards`, { 
+        return fetch(`${this._url}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
@@ -38,7 +38,7 @@ class Api {
     }
 
     editProfile(data) {
-        return fetch(`${this._url}/users/me`, { 
+        return fetch(`${this._url}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -50,7 +50,7 @@ class Api {
     }
 
     editAvatar(data) {
-        return fetch(`${this._url}/users/me/avatar`, { 
+        return fetch(`${this._url}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
@@ -61,7 +61,7 @@ class Api {
     }
 
     deleteCard(data) {
-        return fetch(`${this._url}/cards/${data._id}`, { 
+        return fetch(`${this._url}/cards/${data._id}`, {
             method: 'DELETE',
             headers: this._headers
         })
@@ -69,7 +69,7 @@ class Api {
     }
 
     putLike(id) {
-        return fetch(`${this._url}/cards/${id}/likes`, { 
+        return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'PUT',
             headers: this._headers
         })
@@ -78,7 +78,7 @@ class Api {
 
 
     deleteLike(id) {
-        return fetch(`${this._url}/cards/${id}/likes`, { 
+        return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'DELETE',
             headers: this._headers
         })
@@ -87,9 +87,8 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-34',
+    url: 'http://api.mesto.dolganev.nomoredomains.xyz',
     headers: {
-      authorization: 'c032b560-7e32-413c-bfbd-e51ec985da07',
       'Content-Type': 'application/json'
     }
   });

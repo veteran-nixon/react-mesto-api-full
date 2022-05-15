@@ -20,12 +20,17 @@ const NotFoundError = require('./errors/not-found-error');
 
 const AllErrors = require('./middlewares/all-errors');
 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 // подключаемся к серверу mongo
 mongoose.connect('mongodb://localhost:27017/mestodb');
 
 const app = express();
 
 app.use(express.json());
+
+// логгер запросов
+app.use(requestLogger);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -47,6 +52,10 @@ app.use(auth);
 
 app.use(auth, userRouter);
 app.use(auth, cardRouter);
+
+// логгер ошибок
+app.use(errorLogger);
+
 app.use('*', (req, res, next) => {
   res.send(next(new NotFoundError(`Страницы по адресу ${req.baseUrl} не существует`)));
 });

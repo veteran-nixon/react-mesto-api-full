@@ -36,12 +36,12 @@ function App() {
       api.getAllData()
       .then(([user, cards]) => {
         setCardList(cards)
-        setCurrentUser(user) 
+        setCurrentUser(user)
       })
       .catch((err) => console.log(err))
     }
   }, [loggedIn])
-  
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true)
   }
@@ -57,7 +57,7 @@ function App() {
   function handleCardClick(item) {
     setSelectedCard(item)
   }
-  
+
   function closeAllPopups() {
     setIsEditProfilePopupOpen(false)
     setIsAddPlacePopupOpen(false)
@@ -68,7 +68,7 @@ function App() {
 
   function handleCardLike(card) {
     const isLiked = card.likes.some(i => i._id === currentUser._id);
-    
+
     if(isLiked) {
         api.deleteLike(card._id)
         .then((newCard) => {
@@ -95,7 +95,7 @@ function App() {
   function handleUpdateUser(currentUser) {
       api.editProfile(currentUser)
         .then((data) => {
-          setCurrentUser(data)  
+          setCurrentUser(data)
         })
         .catch((err) => console.log(err))
   }
@@ -103,7 +103,7 @@ function App() {
   function handleUpdateAvatar(currentUser) {
     api.editAvatar(currentUser)
       .then((data) => {
-        setCurrentUser(data)  
+        setCurrentUser(data)
        })
       .catch((err) => console.log(err))
   }
@@ -155,9 +155,9 @@ function App() {
           history.push('/')
         }
       })
-      .catch((err) => console.log(err)); 
+      .catch((err) => console.log(err));
     }
-  } 
+  }
 
   function signOut() {
     localStorage.removeItem('token');
@@ -174,7 +174,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <CardListContext.Provider value={cardList}>
         <Switch>
-          <ProtectedRoute 
+          <ProtectedRoute
             exact path="/"
             loggedIn={loggedIn}
             component={Main}
