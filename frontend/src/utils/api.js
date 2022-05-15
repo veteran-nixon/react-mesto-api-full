@@ -86,11 +86,10 @@ class Api {
     }
 }
 
-const token = localStorage.getItem('token');
 const api = new Api({
     url: 'http://api.mesto.dolganev.nomoredomains.xyz',
     headers: {
-      "Authorization" : `${token}`,
+      "Authorization" : 'Bearer ',
       'Content-Type': 'application/json'
     }
   });
