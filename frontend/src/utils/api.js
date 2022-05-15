@@ -90,7 +90,7 @@ const token = localStorage.getItem('token');
 const api = new Api({
     url: 'http://api.mesto.dolganev.nomoredomains.xyz',
     headers: {
-      "Authorization" : `Bearer ${token}`,
+      "Authorization" : `${token}`,
       'Content-Type': 'application/json'
     }
   });

@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Redirect, NavLink, useHistory } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import Header from "./Header";
@@ -121,7 +121,7 @@ function App() {
       history.push('/')
     }
     tokenCheck()
-  }, [history, loggedIn])
+  }, [history, loggedIn, tokenCheck])
 
   function handleRegister(password, email) {
     return mestoAuth.register(password, email).then(() => {
