@@ -4,14 +4,10 @@ import DefaultForm from "./DefaultForm";
 
 
 function Register({ handleRegister}) {
-    // const [data, setData] = React.useState({})
-    const [data, setData] = React.useState({
-        password: '12345678Q1',
-        email: 'qwertytest11@ya.ru'
-    })
+    const [data, setData] = React.useState({})
 
     const { password, email } = data;
-    
+
 
     function handleChange(e) {
         const {name, value} = e.target;
