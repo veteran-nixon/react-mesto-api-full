@@ -121,7 +121,7 @@ function App() {
       history.push('/')
     }
     tokenCheck()
-  }, [history, loggedIn, tokenCheck])
+  }, [history, loggedIn])
 
   function handleRegister(password, email) {
     return mestoAuth.register(password, email).then(() => {

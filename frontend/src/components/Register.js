@@ -4,7 +4,10 @@ import DefaultForm from "./DefaultForm";
 
 
 function Register({ handleRegister}) {
-    const [data, setData] = React.useState({})
+    const [data, setData] = React.useState({
+      email: '',
+      password: ''
+    })
 
     const { password, email } = data;
 

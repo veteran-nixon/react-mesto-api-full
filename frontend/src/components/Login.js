@@ -2,7 +2,10 @@ import React from "react";
 import DefaultForm from "./DefaultForm";
 
 function Login({handleLogin}) {
-    const [data, setData] = React.useState({})
+    const [data, setData] = React.useState({
+      email: '',
+      password: ''
+    })
 
     const { password, email } = data;
 
