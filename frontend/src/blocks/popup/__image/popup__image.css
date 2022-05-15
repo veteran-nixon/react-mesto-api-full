@@ -1,0 +1,15 @@
+.popup__image {
+    max-height: 540px;
+}
+
+@media all and (max-width: 900px) {
+    .popup__image {
+        max-height: 470px;
+    }
+}
+
+@media all and (max-width: 600px) {
+    .popup__image {
+        max-height: 299px;
+    }
+}

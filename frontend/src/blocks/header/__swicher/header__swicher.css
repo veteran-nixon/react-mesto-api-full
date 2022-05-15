@@ -1,0 +1,21 @@
+.header__swicher {
+    color: rgba(255, 255, 255, 1);
+    margin: 0;
+    margin-left: 24px;
+    /* height: 22px;
+    width: 114px; */
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    /* text-align: right; */
+    transition: opacity .3s linear;
+    cursor: pointer;
+}
+
+.header__swicher:hover {
+    opacity: .6;
+    cursor: pointer;
+}
