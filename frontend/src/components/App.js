@@ -31,17 +31,6 @@ function App() {
   const [isSucces, setIsSucces] = React.useState(false);
   const history = useHistory();
 
-  React.useEffect(() => {
-    if(loggedIn) {
-      api.getAllData()
-      .then(([user, cards]) => {
-        setCardList(cards)
-        setCurrentUser(user)
-      })
-      .catch((err) => console.log(err))
-    }
-  }, [loggedIn])
-
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true)
   }
@@ -67,9 +56,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
-    console.log(currentUser._id)
-    console.log(card._id)
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     if(isLiked) {
         api.deleteLike(card._id)
@@ -87,7 +74,7 @@ function App() {
   }
 
   function handleCardDelete(card) {
-      api.deleteCard(card)
+      api.deleteCard(card._id)
         .then(() => {
           setCardList((state) => state.filter((c) => c !== card))
         })
@@ -122,8 +109,7 @@ function App() {
     if(loggedIn) {
       history.push('/')
     }
-    tokenCheck()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    tokenCheck();
   }, [history, loggedIn])
 
   function handleRegister(password, email) {
@@ -147,6 +133,17 @@ function App() {
       console.log(err)
     });
   }
+
+  React.useEffect(() => {
+    if(loggedIn) {
+      api.getAllData()
+      .then(([user, cards]) => {
+        setCardList(cards)
+        setCurrentUser(user)
+      })
+      .catch((err) => console.log(err))
+    }
+  }, [loggedIn])
 
   function tokenCheck() {
     const token = localStorage.getItem('token');
