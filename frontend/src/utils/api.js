@@ -103,7 +103,7 @@ class Api {
 }
 
 const api = new Api({
-    url: 'https://api.mesto.dolganev.nomoredomains.xyz',
+    url: 'http://api.mesto.dolganev.nomoredomains.xyz',
   });
 
   export default api;
