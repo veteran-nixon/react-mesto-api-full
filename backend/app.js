@@ -1,12 +1,12 @@
 const express = require('express');
 
+require('dotenv').config();
+
 const { celebrate, Joi, errors } = require('celebrate');
 
 const { PORT = 3000 } = process.env;
 
 const mongoose = require('mongoose');
-
-require('dotenv').config();
 
 const corsAllow = require('./middlewares/cors');
 
