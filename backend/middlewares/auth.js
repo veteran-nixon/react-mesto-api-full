@@ -5,7 +5,7 @@ require('dotenv').config();
 // eslint-disable-next-line no-console
 console.log(process.env.NODE_ENV);
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
 const UnauthorizedError = require('../errors/unauthorized-error');
 
