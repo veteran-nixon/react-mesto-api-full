@@ -50,27 +50,28 @@ app.post('/signup', celebrate({
     about: Joi.string().min(2).max(30),
     avatar: Joi.string().regex(/^((http|https):\/\/)?(www\.)?([A-Za-zА-Яа-я0-9]{1}[A-Za-zА-Яа-я0-9\\-]*\.?)*\.{1}[A-Za-zА-Яа-я0-9-]{2,8}(\/([\w#!:.?+=&%@!\-\\/])*)?/),
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(4),
+    password: Joi.string().required().min(),
   }),
 }), createUser);
 app.post('/signin', celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email(),
-    password: Joi.string().required().min(4),
+    password: Joi.string().required().min(),
   }),
 }), login);
 
 app.use(auth);
 
-app.use(auth, userRouter);
-app.use(auth, cardRouter);
+app.use(userRouter);
+app.use(cardRouter);
+
+app.use('*', (req, res, next) => {
+  next(new NotFoundError(`Страницы по адресу ${req.baseUrl} не существует`));
+});
 
 // логгер ошибок
 app.use(errorLogger);
 
-app.use('*', (req, res, next) => {
-  res.send(next(new NotFoundError(`Страницы по адресу ${req.baseUrl} не существует`)));
-});
 app.use(errors());
 
 app.use(AllErrors);
